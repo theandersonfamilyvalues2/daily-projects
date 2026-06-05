@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Blog — Starting Summer School</title>
+<link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&family=Patrick+Hand&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sunshine: #FFD93D;
+    --sky: #6BCEFF;
+    --coral: #FF6B6B;
+    --mint: #6BCB77;
+    --lavender: #C77DFF;
+    --peach: #FFB347;
+    --white: #FFFEF7;
+    --ink: #2d2d2d;
+    --soft-gray: #f0ede4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--white);
+    color: var(--ink);
+    font-family: 'Nunito', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* DOODLE BACKGROUND */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: 
+      radial-gradient(circle at 10% 20%, rgba(255,217,61,0.15) 0%, transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(107,206,255,0.15) 0%, transparent 40%),
+      radial-gradient(circle at 50% 50%, rgba(107,203,119,0.08) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--sunshine);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 4px solid var(--ink);
+  }
+
+  .header-doodles {
+    position: absolute;
+    inset: 0;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    opacity: 0.2;
+    pointer-events: none;
+    letter-spacing: 0.5rem;
+  }
+
+  .header-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+
+  .blog-tag {
+    display: inline-block;
+    background: var(--coral);
+    color: white;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 0.85rem;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    border: 2px solid var(--ink);
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+    box-shadow: 2px 2px 0 var(--ink);
+  }
+
+  .blog-title {
+    font-family: 'Architects Daughter', cursive;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    text-shadow: 3px 3px 0 rgba(0,0,0,0.1);
+  }
+
+  .blog-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .meta-chip {
+    background: white;
+    border: 2px solid var(--ink);
+    border-radius: 20px;
+    padding: 0.3rem 0.9rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    box-shadow: 2px 2px 0 var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  /* MAIN */
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* LINED PAPER EFFECT */
+  .paper {
+    background: white;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 3rem 3rem 3rem 4.5rem;
+    position: relative;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.08), 8px 8px 0 rgba(0,0,0,0.04);
+    margin-bottom: 2.5rem;
+    background-image: 
+      linear-gradient(rgba(107,206,255,0.15) 1px, transparent 1px);
+    background-size: 100% 2.2rem;
+    background-position: 0 1.5rem;
+  }
+
+  /* Red margin line */
+  .paper::before {
+    content: '';
+    position: absolute;
+    left: 3.5rem;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: rgba(255,107,107,0.4);
+  }
+
+  /* Spiral holes */
+  .paper::after {
+    content: '○\A○\A○\A○\A○\A○\A○\A○\A○';
+    white-space: pre;
+    position: absolute;
+    left: 1rem;
+    top: 1.5rem;
+    font-size: 0.9rem;
+    color: #ccc;
+    line-height: 2.2rem;
+  }
+
+  .section-heading {
+    font-family: 'Architects Daughter', cursive;
+    font-size: 1.5rem;
+    color: var(--coral);
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .body-text {
+    font-size: 1.05rem;
+    line-height: 2.2rem; /* match lined paper */
+    color: var(--ink);
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.1rem;
+  }
+
+  .body-text p {
+    margin-bottom: 0;
+  }
+
+  /* STICKY NOTE */
+  .sticky {
+    background: var(--sunshine);
+    border: none;
+    padding: 1.5rem 1.8rem;
+    transform: rotate(-1.5deg);
+    box-shadow: 3px 3px 8px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.05);
+    margin: 2rem auto;
+    max-width: 400px;
+    position: relative;
+    font-family: 'Architects Daughter', cursive;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+  }
+
+  .sticky::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 16px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 2px;
+  }
+
+  .sticky.blue { background: #b3e5fc; transform: rotate(1deg); }
+  .sticky.green { background: #c8e6c9; transform: rotate(-0.5deg); }
+  .sticky.pink { background: #f8bbd0; transform: rotate(2deg); }
+  .sticky.lavender { background: #e1bee7; transform: rotate(-1deg); }
+
+  /* EMOJI BULLETS */
+  .emoji-list {
+    list-style: none;
+    padding: 0;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.1rem;
+    line-height: 2.2rem;
+  }
+
+  .emoji-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.1rem 0;
+  }
+
+  .emoji-list li span:first-child {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, var(--mint), #4caf7d);
+    color: white;
+    padding: 1.5rem 2rem;
+    border-radius: 12px;
+    border: 3px solid var(--ink);
+    box-shadow: 4px 4px 0 var(--ink);
+    margin: 2rem 0;
+    font-family: 'Architects Daughter', cursive;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    text-align: center;
+  }
+
+  .highlight-box .big {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  /* SECTION DIVIDER */
+  .divider {
+    text-align: center;
+    font-size: 1.8rem;
+    margin: 1.5rem 0;
+    letter-spacing: 0.5rem;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--sky);
+    border-top: 4px solid var(--ink);
+    padding: 2.5rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-inner {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  footer h3 {
+    font-family: 'Architects Daughter', cursive;
+    font-size: 1.4rem;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  footer p {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1rem;
+    color: #333;
+  }
+
+  .comment-prompt {
+    display: inline-block;
+    background: white;
+    border: 2px solid var(--ink);
+    border-radius: 25px;
+    padding: 0.5rem 1.5rem;
+    font-family: 'Architects Daughter', cursive;
+    font-size: 0.9rem;
+    box-shadow: 3px 3px 0 var(--ink);
+    margin-top: 1rem;
+    cursor: default;
+  }
+
+  /* ANIMATIONS */
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(-1.5deg); }
+    50% { transform: rotate(-0.5deg); }
+  }
+
+  .sticky:hover { animation: wiggle 0.5s ease-in-out; }
+
+  @keyframes bounce-in {
+    0% { transform: scale(0.8); opacity: 0; }
+    60% { transform: scale(1.05); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  .paper {
+    animation: bounce-in 0.5s ease both;
+  }
+
+  .paper:nth-child(2) { animation-delay: 0.1s; }
+  .paper:nth-child(3) { animation-delay: 0.2s; }
+  .paper:nth-child(4) { animation-delay: 0.3s; }
+
+  @media (max-width: 600px) {
+    .paper { padding: 2rem 1.5rem 2rem 3rem; }
+    .paper::after { display: none; }
+    .paper::before { left: 2.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-doodles">☀️ 📚 ✏️ 🌟 📖 ☀️ 🎒 ✏️ 🌟 📚 ☀️</div>
+  <div class="header-inner">
+    <div class="blog-tag">📝 My Personal Blog</div>
+    <h1 class="blog-title">Starting Summer School<br>& How I'm Feeling About It</h1>
+    <div class="blog-meta">
+      <div class="meta-chip">☀️ Summer 2025</div>
+      <div class="meta-chip">📖 Personal</div>
+      <div class="meta-chip">💬 My Thoughts</div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- INTRO -->
+  <div class="paper">
+    <div class="section-heading">Hey Everyone! 👋</div>
+    <div class="body-text">
+      <p>Okay so I know summer is supposed to be all about sleeping in, swimming, and doing absolutely nothing for like three months. And honestly? That sounds AMAZING. But this year is a little different for me — I'm starting summer school.</p>
+      <br>
+      <p>I'm not gonna lie, when I first found out I had to go, I was SO upset. Like, all my friends are at the pool and I have to get up early and go to class? That felt really unfair. But I decided to write about it because writing helps me figure out how I feel about stuff.</p>
+      <br>
+      <p>So here's my honest, real, no-filter thoughts on summer school so far. 🙃</p>
+    </div>
+  </div>
+
+  <div class="sticky pink">
+    Real talk: I cried the night before the first day. 😭 But I'm still here and I survived, so that's something!
+  </div>
+
+  <!-- HOW I FELT AT FIRST -->
+  <div class="paper">
+    <div class="section-heading">How I Felt on Day One 😬</div>
+    <div class="body-text">
+      <p>Walking in on the first morning was SO awkward. I didn't know who was going to be in my class and I was worried I'd be the only person from my school. Spoiler: I wasn't, but it still felt weird.</p>
+      <br>
+      <p>Here's the honest list of feelings I had:</p>
+    </div>
+    <br>
+    <ul class="emoji-list">
+      <li><span>😒</span><span>Kind of annoyed that summer was "ruined"</span></li>
+      <li><span>😰</span><span>Nervous about not knowing anyone</span></li>
+      <li><span>😳</span><span>Embarrassed because I thought it meant I was "dumb"</span></li>
+      <li><span>😤</span><span>A tiny bit mad (okay, a LOT mad)</span></li>
+      <li><span>😶</span><span>Trying to keep it together and not show any of that</span></li>
+    </ul>
+  </div>
+
+  <!-- THE REAL REASON -->
+  <div class="paper">
+    <div class="section-heading">The Thing About Summer School 💭</div>
+    <div class="body-text">
+      <p>Here's what I've been thinking about. Summer school doesn't mean you're dumb. I know that in my head, but it's harder to believe it in your heart sometimes, you know?</p>
+      <br>
+      <p>My mom told me that summer school means someone cares enough to make sure I don't fall behind. That it's actually a GOOD thing — like a second chance or extra help, not a punishment. I'm still working on fully believing that, but I think she has a point.</p>
+      <br>
+      <p>Some of the smartest people I know needed extra help with stuff. That doesn't make them any less smart. It just means they needed a different way to learn something. And that's… actually okay?</p>
+    </div>
+  </div>
+
+  <div class="sticky blue">
+    Something my mom said that I keep thinking about: "The kids who ask for help are the bravest ones." 💙
+  </div>
+
+  <!-- WHAT'S ACTUALLY GOOD -->
+  <div class="paper">
+    <div class="section-heading">Okay But Some Things Are Actually Good 😅</div>
+    <div class="body-text">
+      <p>I hate to admit this but… it's not as bad as I thought it would be. Here's what I've noticed:</p>
+    </div>
+    <br>
+    <ul class="emoji-list">
+      <li><span>✅</span><span>The classes are smaller so the teacher actually knows your name</span></li>
+      <li><span>✅</span><span>We get more time to actually understand stuff instead of rushing</span></li>
+      <li><span>✅</span><span>I met a girl named Maya who is really funny and we eat lunch together now</span></li>
+      <li><span>✅</span><span>It ends early enough that I can still do stuff in the afternoon</span></li>
+      <li><span>✅</span><span>I feel like I'm actually starting to understand the stuff I was confused about</span></li>
+    </ul>
+    <br>
+    <div class="body-text">
+      <p>That last one is the biggest one. There was this topic in math that I always felt lost on and acted like I understood it when I didn't. But now I actually GET it. And that feeling is kind of amazing.</p>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <span class="big">💡</span>
+    Understanding something you used to be confused about is one of the best feelings EVER. Like your brain just leveled up! 🎮
+  </div>
+
+  <!-- WHAT I'M LEARNING ABOUT MYSELF -->
+  <div class="paper">
+    <div class="section-heading">What I'm Learning About Myself 🌱</div>
+    <div class="body-text">
+      <p>This is the part I didn't expect at ALL. I thought summer school would just be boring review stuff. But I'm learning things about myself too.</p>
+      <br>
+      <p>I'm learning that I give up too fast when something is hard. Like, the second I feel confused I kind of check out and hope no one notices. But in a smaller class you can't really hide, so I've had to actually ask questions. And you know what? Nobody laughed. The teacher just… answered. It was fine.</p>
+      <br>
+      <p>I'm also learning that doing something hard, even when you don't want to, builds something inside you. I don't know the exact word for it but it feels like… strength? Confidence? Something good.</p>
+    </div>
+  </div>
+
+  <div class="sticky green">
+    Note to my future self reading this: You did the hard thing. That matters. 🌟
+  </div>
+
+  <!-- MY GOALS -->
+  <div class="paper">
+    <div class="section-heading">My Goals for the Rest of Summer School 🎯</div>
+    <ul class="emoji-list">
+      <li><span>📚</span><span>Actually pay attention every single day, even when I'm tired</span></li>
+      <li><span>🙋🏽‍♀️</span><span>Raise my hand more, even when I'm not 100% sure</span></li>
+      <li><span>😴</span><span>Go to bed at a decent time so I'm not falling asleep in class</span></li>
+      <li><span>📝</span><span>Keep writing in this blog about how things are going</span></li>
+      <li><span>🤝</span><span>Be kind to the other kids — we're all in this together</span></li>
+      <li><span>🏆</span><span>Finish strong and walk out of there PROUD</span></li>
+    </ul>
+  </div>
+
+  <!-- CLOSING -->
+  <div class="paper">
+    <div class="section-heading">My Final Thoughts (For Now) 💛</div>
+    <div class="body-text">
+      <p>If you're reading this and you're also going to summer school, or you had to do something this summer that you didn't want to do — I see you. It's okay to be upset about it at first. Those feelings are real.</p>
+      <br>
+      <p>But I also want to say: you might surprise yourself. I know I'm surprising myself. Every morning I wake up and I go, and every day I come home knowing a little more than I did before. That has to count for something.</p>
+      <br>
+      <p>Summer school isn't the end of summer. It's just a different kind of summer. And maybe, just maybe, I'll look back on this one as the summer I got stronger. 💪🏽</p>
+      <br>
+      <p>Thanks for reading my blog. I'll keep writing. ✏️</p>
+      <br>
+      <p style="font-family: 'Architects Daughter', cursive; font-size:1.2rem; color: var(--coral);">— Me 🌻</p>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <h3>My Summer Blog ☀️</h3>
+    <p>Written honestly, from the heart, during the summer I didn't expect.</p>
+    <div class="comment-prompt">💬 Thanks for reading! Stay strong out there ✨</div>
+  </div>
+</footer>
+
+</body>
+</html>
