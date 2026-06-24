@@ -1,0 +1,143 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-panel: var(--panel);
+  --color-panel-border: var(--panel-border);
+  --color-gold: var(--gold);
+  --color-warm-gold: var(--warm-gold);
+  --color-cream: var(--cream);
+  --color-sky: var(--sky);
+  --color-ready: var(--ready);
+  --color-placeholder-state: var(--placeholder-state);
+  --font-display: "Bebas Neue", "Oswald", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+:root {
+  --radius: 0.75rem;
+  --background: #142238;
+  --foreground: #f7f3ec;
+  --panel: #1c2a44;
+  --panel-border: rgba(255, 255, 255, 0.10);
+  --gold: #d99423;
+  --warm-gold: #f5b042;
+  --cream: #f7f3ec;
+  --sky: #7cc4ff;
+  --ready: #6ed18a;
+  --placeholder-state: #93a3bd;
+
+  --card: #1c2a44;
+  --card-foreground: #f7f3ec;
+  --popover: #1c2a44;
+  --popover-foreground: #f7f3ec;
+  --primary: #d99423;
+  --primary-foreground: #0f1a2c;
+  --secondary: #243450;
+  --secondary-foreground: #f7f3ec;
+  --muted: #243450;
+  --muted-foreground: rgba(247, 243, 236, 0.70);
+  --accent: #f5b042;
+  --accent-foreground: #0f1a2c;
+  --destructive: oklch(0.62 0.22 25);
+  --destructive-foreground: #f7f3ec;
+  --border: rgba(255, 255, 255, 0.10);
+  --input: rgba(255, 255, 255, 0.14);
+  --ring: #d99423;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html, body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+
+  body {
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(245, 176, 66, 0.18), transparent 60%),
+      radial-gradient(ellipse 60% 45% at 100% 100%, rgba(124, 196, 255, 0.10), transparent 60%),
+      radial-gradient(ellipse 50% 40% at 0% 60%, rgba(110, 209, 138, 0.06), transparent 60%);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+    letter-spacing: 0.01em;
+  }
+
+  .label-mono {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.7rem;
+  }
+}
+
+@utility panel {
+  background-color: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 20px 40px -30px rgba(0, 0, 0, 0.55);
+}
+
+@utility panel-hover {
+  transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+  &:hover {
+    transform: translateY(-3px);
+    border-color: rgba(217, 148, 35, 0.55);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset, 0 24px 60px -30px rgba(245, 176, 66, 0.4);
+  }
+}
+
+@utility text-gold-gradient {
+  background: linear-gradient(135deg, #ffd98a 0%, #f5b042 45%, #d99423 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility watermark-number {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  font-family: var(--font-display);
+  font-size: 6rem;
+  line-height: 1;
+  color: rgba(245, 176, 66, 0.10);
+  pointer-events: none;
+  user-select: none;
+}

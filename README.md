@@ -1,76 +1,122 @@
-# Family Site Workflow
+# Anderson Creator Academy
 
-This site is set up for the simplest workflow:
+13 weeks. 91 days. One project at a time. Build something real.
 
-1. Claude updates content in `data.js`
-2. GitHub stores the change
-3. Netlify deploys automatically
-4. Your custom domain points to the Netlify site
+A family learning dashboard for Zoe and Macie — disciplined, creative, premium, kid-friendly, structured, motivating.
 
-## Files That Matter
+## Daily Rhythm
 
-- `index.html`: the site shell and layout
-- `data.js`: the content source Claude should update
-- `netlify.toml`: tells Netlify to publish this folder
+Sessions are **25 minutes of work + 5 minute break = 30 minute blocks**, starting at **10:00 AM**.
 
-## Daily Workflow
+1. 10:00 — Morning Reset
+2. 10:30 — Workout + Exercise
+3. 11:00 — Meditation
+4. 11:30 — ★ Wisdom First (before any screen)
+5. 12:00 — IXL Math
+6. 12:30 — IXL Elective (rotates by day)
+7. 1:00 — Tynker
+8. 1:30 — Sparketh
+9. 2:00 — Project Work
+10. 2:30 — Project Work (cont.)
+11. 3:00 — House
+12. Sunday PM — Demo Night
 
-When you want to add a new day:
+## Project Phases — Weekly Deliverables
 
-1. Open `data.js`
-2. Copy the last day object in `ACADEMY.days`
-3. Change the `day` number
-4. Update the wisdom, project, and proof fields
-5. Change `ACADEMY.currentDay` to the new day number
-6. Commit and push to GitHub
-7. Netlify deploys automatically
+### Week 01 · Days 1–7 — Comic Universe: Hero
+**Output:** Hero character sheet in Google Slides
+- Hero name + one-line origin
+- Visual character sheet
+- Power list + one weakness
+- Mission statement
 
-## Best Prompt For Claude
+### Week 02 · Days 8–14 — Comic Universe: Villain
+**Output:** Villain sheet + conflict map
+- Villain backstory
+- Why they oppose the hero
+- Conflict map
+- First confrontation idea
 
-Use prompts like:
+### Week 03 · Days 15–21 — Comic Universe: World
+**Output:** World bible — setting, rules, map, cast
+- World map sketch
+- Three key locations
+- Rules of the world
+- Supporting cast
 
-"Update `data.js` in my family-site repo. Add Day 8 in the `ACADEMY.days` array, keep the same structure, and set `currentDay` to 8."
+### Week 04 · Days 22–28 — Script: Act 1
+**Output:** Scene list + dialogue draft
+- Beat sheet
+- Scene list
+- Dialogue draft
+- Opening page
 
-or
+### Week 05 · Days 29–35 — Script: Act 2
+**Output:** Conflict scenes + dialogue
+- Midpoint scene
+- Conflict beats
+- Dialogue pass
+- Turning point
 
-"Append a new wisdom day to `data.js` for the family-site project. Do not change `index.html`. Only add the next day object and update `currentDay`."
+### Week 06 · Days 36–42 — Script: Act 3
+**Output:** Climax, revision, table read
+- Climax scene
+- Full revision pass
+- Family table read
+- Final script
 
-This keeps Claude focused on content instead of breaking layout code.
+### Week 07 · Days 43–49 — Comic: Thumbnails
+**Output:** 6-page storyboard
+- Page thumbnails
+- Panel breakdown
+- Camera + framing
+- Lettering plan
 
-## Recommended Ownership Model
+### Week 08 · Days 50–56 — Comic: Draft Pages
+**Output:** All 6 rough pages
+- Linework
+- Page layout pass
+- Dialogue placement
+- Self-critique
 
-- One production repo for the live site
-- Netlify connected to that repo
-- Claude only edits content unless you explicitly want layout changes
+### Week 09 · Days 57–63 — Comic: Final Pages
+**Output:** Finished pages, cover, credits, export
+- Color flats
+- Lettering
+- Cover
+- Final PDF export
 
-If your kids build separate experiments, keep those separate from this repo and only merge approved content into the production site.
+### Week 10 · Days 64–70 — Brand + Google Site
+**Output:** Logo, colors, fonts, live site
+- Logo + title treatment
+- Color palette
+- Font system
+- Live Google Site
 
-## Netlify Setup
+### Week 11 · Days 71–77 — Business: Store Concept
+**Output:** Products, pricing, profit math
+- Product list
+- Pricing
+- Profit math
+- Store page mockup
 
-After this folder is in GitHub:
+### Week 12 · Days 78–84 — Marketing Campaign
+**Output:** YT/IG/FB assets, trailer, poster
+- Trailer
+- Poster
+- Social posts
+- Launch plan
 
-1. In Netlify, choose `Add new site` -> `Import an existing project`
-2. Connect GitHub
-3. Choose the repo
-4. Base directory: leave blank if this repo only contains the site
-5. Build command: leave blank
-6. Publish directory: `.`
-7. Deploy
+### Week 13 · Days 85–91 — Launch + Portfolio
+**Output:** Final portfolio + family demo
+- Portfolio page
+- Process write-up
+- Family demo night
+- Credits
 
-## Custom Domain
+## Reference Links
 
-After deploy:
-
-1. Buy a domain from your registrar
-2. In Netlify, open `Domain management`
-3. Add the custom domain
-4. Update the DNS or nameservers at your registrar
-
-## Recommendation
-
-For the least work:
-
-- keep this as one main site
-- use one GitHub repo
-- let Netlify auto-deploy from `main`
-- let Claude mostly edit `data.js`
+- https://www.youtube.com/watch?v=9lFPMZrYLHQ
+- https://www.youtube.com/watch?v=Lq-a6kww0b4&list=PLvf_LH4Nzg107rrix5DK-fXCvZsT6dr8f&index=12
+- https://www.youtube.com/watch?v=KOvE5oAubpA&list=PLvf_LH4Nzg107rrix5DK-fXCvZsT6dr8f&index=14
+- https://www.youtube.com/watch?v=4_2AJW33rJo&list=PLGg0baHR_4LGxD6fa4-9msOSWgMcgdBLu&index=6
