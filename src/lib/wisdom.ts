@@ -105,14 +105,17 @@ export const wisdomLibrary: WisdomEntry[] = raw.map(([category, title, lesson], 
     return {
       ...base,
       status: "ready",
-      quote: "Every great dream begins with one brave step.",
-      summary: "Harriet Tubman teaches that courage means moving forward even when the path is dangerous.",
+      quote: "I never ran my train off the track and I never lost a passenger.",
+      summary:
+        "Born Araminta Ross on Maryland's Eastern Shore, Harriet Tubman escaped slavery, returned again and again to guide others to freedom, served the Union during the Civil War, and proved that courage is action under pressure.",
       bullets: [
-        "She escaped slavery and returned to guide others to freedom.",
-        "She risked her life again and again for what was right.",
-        "Her courage changed history and saved lives."
+        "She escaped slavery in 1849, then kept going back for family and others.",
+        "She made repeated Underground Railroad missions and helped about 70 people reach freedom.",
+        "During the Civil War, she served as a nurse, scout, spy, and military leader.",
+        "At the Combahee River Raid in 1863, she helped free more than 700 enslaved people."
       ],
-      connection: "Like Harriet, creators have to trust the path before anyone else can see it."
+      connection:
+        "Great creators do not wait for perfect conditions. They study the map, protect the team, move with courage, and build a path others can follow."
     };
   }
   if (slug === "frederick-douglass") {
