@@ -101,6 +101,20 @@ export const wisdomLibrary: WisdomEntry[] = raw.map(([category, title, lesson], 
     status: "placeholder",
     slug,
   };
+  if (slug === "harriet-tubman") {
+    return {
+      ...base,
+      status: "ready",
+      quote: "Every great dream begins with one brave step.",
+      summary: "Harriet Tubman teaches that courage means moving forward even when the path is dangerous.",
+      bullets: [
+        "She escaped slavery and returned to guide others to freedom.",
+        "She risked her life again and again for what was right.",
+        "Her courage changed history and saved lives."
+      ],
+      connection: "Like Harriet, creators have to trust the path before anyone else can see it."
+    };
+  }
   if (slug === "frederick-douglass") {
     return {
       ...base,
