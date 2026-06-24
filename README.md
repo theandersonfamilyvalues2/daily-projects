@@ -4,6 +4,23 @@
 
 A family learning dashboard for Zoe and Macie — disciplined, creative, premium, kid-friendly, structured, motivating.
 
+## Live Site
+
+- Production: https://andersoncreatoracademy.com
+- Netlify deploy URL: https://main--superb-griffin-c1d74f.netlify.app
+
+## Netlify Deploy Note
+
+If the live link shows Netlify's `Page not found` screen, the app likely published only static client files and missed the Nitro server output.
+
+This project needs:
+
+- `npm run build`
+- publish directory: `dist`
+- Nitro output enabled in `vite.config.ts`
+
+If that 404 appears again after a push, check the deploy logs and make sure the build is producing server/runtime output, not just `dist/client`.
+
 ## Daily Rhythm
 
 Sessions are **25 minutes of work + 5 minute break = 30 minute blocks**, starting at **10:00 AM**.
