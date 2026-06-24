@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Frederick Douglass — Voice & Freedom</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Crimson+Pro:wght@300;400;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f7f1e6;
+    --ink: #17120d;
+    --brown: #4b3427;
+    --gold: #c9962a;
+    --gold-light: #e8b84b;
+    --brick: #8d4331;
+    --midnight: #111827;
+    --forest: #22352e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Crimson Pro', serif;
+    line-height: 1.7;
+  }
+
+  .hero {
+    min-height: 88vh;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(201,150,42,0.15), transparent 30%),
+      radial-gradient(circle at 85% 80%, rgba(141,67,49,0.2), transparent 35%),
+      linear-gradient(160deg, var(--midnight), #20150f 55%, #312116 100%);
+    color: #f8f3ea;
+    display: grid;
+    place-items: center;
+    padding: 4rem 2rem;
+  }
+
+  .hero-inner {
+    width: min(1100px, 100%);
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 1.2rem;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 7vw, 5.4rem);
+    line-height: 1;
+    margin-bottom: 0.75rem;
+  }
+
+  .subtitle {
+    font-size: 1.35rem;
+    font-style: italic;
+    color: rgba(248,243,234,0.78);
+    margin-bottom: 1.6rem;
+  }
+
+  .hero-note {
+    max-width: 620px;
+    font-size: 1.08rem;
+    color: rgba(248,243,234,0.78);
+  }
+
+  .quote {
+    margin-top: 2rem;
+    padding-left: 1.2rem;
+    border-left: 3px solid var(--gold);
+    font-size: 1.22rem;
+    font-style: italic;
+    color: rgba(248,243,234,0.92);
+  }
+
+  .portrait {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(201,150,42,0.35);
+    padding: 2rem;
+    min-height: 420px;
+    display: grid;
+    place-items: center;
+    box-shadow: 10px 10px 0 rgba(201,150,42,0.18);
+  }
+
+  .portrait-inner {
+    text-align: center;
+  }
+
+  .portrait-icon {
+    font-size: 6rem;
+    margin-bottom: 1rem;
+  }
+
+  .portrait-caption {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+  }
+
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(247,241,230,0.96);
+    border-bottom: 1px solid rgba(23,18,13,0.12);
+    padding: 0.9rem 2rem;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    width: min(1100px, 100%);
+    margin: 0 auto;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: var(--brown);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.76rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  section {
+    width: min(1100px, 100%);
+    margin: 0 auto;
+    padding: 4rem 2rem;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.9rem;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 1.75rem;
+    color: var(--brown);
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 2rem;
+  }
+
+  .body p { margin-bottom: 1rem; font-size: 1.08rem; }
+
+  .note-box {
+    background: #fffaf1;
+    border-left: 4px solid var(--gold);
+    padding: 1.3rem 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .note-box h3 {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brick);
+    margin-bottom: 0.55rem;
+  }
+
+  .timeline {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .timeline-item {
+    background: #fffaf1;
+    border: 1px solid rgba(23,18,13,0.08);
+    border-radius: 14px;
+    padding: 1.15rem 1.15rem 1rem;
+  }
+
+  .year {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--gold);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+
+  .timeline-item h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    color: var(--brown);
+    margin-bottom: 0.35rem;
+  }
+
+  .pull {
+    background: var(--forest);
+    color: #f8f3ea;
+    padding: 2.5rem;
+    border-radius: 16px;
+    margin-top: 2rem;
+  }
+
+  .pull p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-style: italic;
+    line-height: 1.6;
+  }
+
+  .pull cite {
+    display: block;
+    margin-top: 1rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    color: rgba(248,243,234,0.7);
+    text-transform: uppercase;
+    font-style: normal;
+  }
+
+  .wisdom-list {
+    display: grid;
+    gap: 0.9rem;
+  }
+
+  .wisdom-item {
+    background: #fffaf1;
+    border-radius: 12px;
+    padding: 1rem 1rem 1rem 1.2rem;
+    border: 1px solid rgba(23,18,13,0.08);
+    position: relative;
+  }
+
+  .wisdom-item::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--gold);
+    border-radius: 12px 0 0 12px;
+  }
+
+  footer {
+    background: var(--midnight);
+    color: rgba(248,243,234,0.7);
+    text-align: center;
+    padding: 2.5rem 2rem;
+    margin-top: 1rem;
+  }
+
+  footer a {
+    color: var(--gold-light);
+    text-decoration: none;
+  }
+
+  @media (max-width: 800px) {
+    .hero-inner, .two-col { grid-template-columns: 1fr; }
+    .portrait { min-height: 300px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow">History · Daily Wisdom · Day 06</div>
+      <h1>Frederick Douglass</h1>
+      <div class="subtitle">Voice, Literacy, and Freedom</div>
+      <p class="hero-note">Frederick Douglass taught himself to read while enslaved, escaped to freedom, and became one of the most powerful speakers and writers in American history. He proved that words can challenge injustice and change a nation.</p>
+      <div class="quote">“Once you learn to read, you will be forever free.”</div>
+    </div>
+    <div class="portrait">
+      <div class="portrait-inner">
+        <div class="portrait-icon">📚</div>
+        <div class="portrait-caption">Abolitionist · Writer · Speaker · Freedom Fighter</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="#early-life">Early Life</a></li>
+    <li><a href="#timeline">Timeline</a></li>
+    <li><a href="#voice">His Voice</a></li>
+    <li><a href="#wisdom">Kids' Wisdom Notes</a></li>
+  </ul>
+</nav>
+
+<section id="early-life">
+  <div class="section-label">Chapter One</div>
+  <h2>From Enslavement To Self-Education</h2>
+  <div class="two-col">
+    <div class="body">
+      <p>Frederick Douglass was born into slavery in Maryland around 1818. Like many enslaved children, he was separated from his mother and denied basic rights, safety, and education. But even as a child, he understood that knowledge was power.</p>
+      <p>When the wife of one of his enslavers began teaching him the alphabet, that teaching was quickly stopped. Douglass later realized why: people in power understood that literacy could help enslaved people imagine freedom, communicate, and resist oppression.</p>
+      <p>So he kept learning anyway. He traded bread for reading lessons with poor white boys, copied letters he saw in shipyards, and practiced until he could read and write for himself. This became one of the bravest acts of his life.</p>
+    </div>
+    <div>
+      <div class="note-box">
+        <h3>Big Idea</h3>
+        <p>Douglass treated reading as a tool of freedom. He did not wait for permission to grow.</p>
+      </div>
+      <div class="note-box">
+        <h3>Why It Matters</h3>
+        <p>His life shows that learning is not just about school. It can also be about dignity, truth, and the power to tell your own story.</p>
+      </div>
+      <div class="note-box">
+        <h3>Connection To This Site</h3>
+        <p>This is exactly why the kids' pages matter. When they publish what they learned, they are practicing their own voice.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="timeline">
+  <div class="section-label">Chapter Two</div>
+  <h2>Life In Milestones</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="year">1818</div>
+      <h3>Born Into Slavery</h3>
+      <p>Frederick Douglass was born enslaved in Talbot County, Maryland.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">Childhood</div>
+      <h3>Learned To Read In Secret</h3>
+      <p>He used scraps, observation, and determination to teach himself literacy after formal lessons were denied.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">1838</div>
+      <h3>Escaped To Freedom</h3>
+      <p>Douglass escaped from slavery and eventually settled in the North.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">1845</div>
+      <h3>Published His Story</h3>
+      <p>His autobiography exposed the truth of slavery to a wide audience and made him internationally known.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">Later Years</div>
+      <h3>Became A National Voice</h3>
+      <p>He spoke for abolition, civil rights, and human dignity throughout his life.</p>
+    </div>
+  </div>
+</section>
+
+<section id="voice">
+  <div class="section-label">Chapter Three</div>
+  <h2>Why His Voice Still Matters</h2>
+  <div class="two-col">
+    <div class="body">
+      <p>Douglass understood that telling the truth clearly can shake powerful systems. He did not just survive slavery. He explained it, argued against it, and forced people to face what they wanted to ignore.</p>
+      <p>That made him dangerous to injustice. It also made him a model for students, creators, and young writers today. Every time a child learns, presents, publishes, or speaks bravely, they practice a small part of that same power.</p>
+      <p>For Zoe and Macie, Frederick Douglass fits perfectly into the Daily Wisdom flow because this site is not only about finishing assignments. It is also about learning how to think clearly and speak with purpose.</p>
+    </div>
+    <div class="pull">
+      <p>“Knowledge makes a man unfit to be a slave.”</p>
+      <cite>Frederick Douglass</cite>
+    </div>
+  </div>
+</section>
+
+<section id="wisdom">
+  <div class="section-label">Chapter Four</div>
+  <h2>3 Wisdom Notes For The Kids</h2>
+  <div class="wisdom-list">
+    <div class="wisdom-item">
+      <strong>Who was Frederick Douglass?</strong>
+      <p>He was an abolitionist, writer, and speaker who escaped slavery and used his words to fight for freedom.</p>
+    </div>
+    <div class="wisdom-item">
+      <strong>What lesson does he teach?</strong>
+      <p>Learning gives you power. Your voice gets stronger every time you use it with honesty and courage.</p>
+    </div>
+    <div class="wisdom-item">
+      <strong>How does this connect to the project?</strong>
+      <p>When the kids make their own pages, they are practicing exactly what Douglass modeled: learning something deeply, then using their voice to teach others.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Daily Wisdom page for the Anderson workbook flow</p>
+  <p style="margin-top: 0.7rem;"><a href="./daily-wisdom.html">Back to Daily Wisdom</a> · <a href="./homepage-index.html">Back to Home</a></p>
+</footer>
+</body>
+</html>

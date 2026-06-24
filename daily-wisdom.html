@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Wisdom</title>
+<link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Nunito:wght@400;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sunshine: #FFD93D;
+    --sky: #6BCEFF;
+    --coral: #FF6B6B;
+    --mint: #6BCB77;
+    --lavender: #C77DFF;
+    --peach: #FFB347;
+    --gold: #c9962a;
+    --ink: #1a1a2e;
+    --white: #FFFEF7;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0f0f1a;
+    color: var(--white);
+    font-family: 'Nunito', sans-serif;
+    min-height: 100vh;
+  }
+
+  .stars {
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(1px 1px at 15% 25%, rgba(255,255,255,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 35% 65%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 55% 15%, rgba(255,255,255,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 75% 45%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(2px 2px at 80% 10%, rgba(255,217,61,0.6) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  header, main, footer { position: relative; z-index: 1; }
+
+  header {
+    text-align: center;
+    padding: 4.5rem 2rem 3.5rem;
+    background: linear-gradient(to bottom, rgba(201,150,42,0.1), transparent);
+    border-bottom: 1px solid rgba(201,150,42,0.2);
+  }
+
+  .eyebrow {
+    font-family: 'Architects Daughter', cursive;
+    font-size: 0.9rem;
+    color: var(--sunshine);
+    letter-spacing: 0.14em;
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--sunshine), var(--peach), var(--coral));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .sub {
+    max-width: 700px;
+    margin: 0 auto;
+    color: rgba(255,254,247,0.65);
+    line-height: 1.7;
+    font-size: 1rem;
+  }
+
+  .nav-row {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .nav-link {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--white);
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 999px;
+    padding: 0.65rem 1rem;
+    font-size: 0.82rem;
+  }
+
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem 4rem;
+  }
+
+  .section-head {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .section-head h2 {
+    font-family: 'Architects Daughter', cursive;
+    font-size: 1rem;
+    color: rgba(255,254,247,0.55);
+    letter-spacing: 0.1em;
+  }
+
+  .section-head::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 1.35rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card:hover {
+    background: rgba(255,255,255,0.06);
+  }
+
+  .count {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.9rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: rgba(201,150,42,0.12);
+    line-height: 1;
+  }
+
+  .meta {
+    font-size: 0.72rem;
+    color: var(--sunshine);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.45rem;
+  }
+
+  .name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .lesson {
+    color: rgba(255,254,247,0.65);
+    line-height: 1.5;
+    margin-bottom: 0.9rem;
+    min-height: 2.8em;
+  }
+
+  .days {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-bottom: 1rem;
+  }
+
+  .chip {
+    font-size: 0.68rem;
+    border-radius: 999px;
+    padding: 0.28rem 0.55rem;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: rgba(255,254,247,0.72);
+  }
+
+  .card-link {
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 999px;
+    padding: 0.55rem 0.9rem;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .card-link.ready {
+    color: var(--ink);
+    background: linear-gradient(135deg, var(--sunshine), var(--peach));
+  }
+
+  .card-link.soon {
+    color: rgba(255,254,247,0.7);
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  footer {
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    color: rgba(255,254,247,0.35);
+    font-family: 'Architects Daughter', cursive;
+  }
+</style>
+</head>
+<body>
+<div class="stars"></div>
+
+<header>
+  <div class="eyebrow">Workbook Order · One Person At A Time</div>
+  <h1>Daily Wisdom</h1>
+  <p class="sub">This page gives Zoe and Macie the order for their wisdom pages. Each card shows the person, the lesson, and the days when that person appears in the workbook. Harriet Tubman and Frederick Douglass have live pages now. The rest are ready to be added as the kids complete them.</p>
+  <div class="nav-row">
+    <a class="nav-link" href="./homepage-index.html">← Back To Home</a>
+    <a class="nav-link" href="./frederick-douglass.html">Open Frederick Douglass</a>
+  </div>
+</header>
+
+<main>
+  <div class="section-head">
+    <h2>Wisdom Library</h2>
+  </div>
+  <div class="grid" id="wisdomGrid"></div>
+</main>
+
+<footer>
+  Built one wisdom page at a time · 61 people in the workbook rotation
+</footer>
+
+<script>
+const assignments = [
+  { day: 1, week: 1, phase: "Hero", category: "History", person: "Harriet Tubman", lesson: "Courage & rescue", href: "./harriet-tubman.html" },
+  { day: 2, week: 1, phase: "Hero", category: "Science", person: "Marie Curie", lesson: "Discovery & persistence" },
+  { day: 3, week: 1, phase: "Hero", category: "Visual Art", person: "Van Gogh", lesson: "Emotion & color" },
+  { day: 4, week: 1, phase: "Hero", category: "Philosophy", person: "Marcus Aurelius", lesson: "Control what you can" },
+  { day: 5, week: 1, phase: "Hero", category: "Business", person: "Starbucks", lesson: "Customer experience" },
+  { day: 6, week: 1, phase: "Hero", category: "History", person: "Frederick Douglass", lesson: "Voice & freedom", href: "./frederick-douglass.html" },
+  { day: 7, week: 1, phase: "Hero", category: "Science", person: "Nikola Tesla", lesson: "Invention & electricity" },
+  { day: 8, week: 2, phase: "Villain", category: "Visual Art", person: "Frida Kahlo", lesson: "Identity & self-expression" },
+  { day: 9, week: 2, phase: "Villain", category: "Philosophy", person: "Epictetus", lesson: "Discipline & attitude" },
+  { day: 10, week: 2, phase: "Villain", category: "Business", person: "Disney", lesson: "Story as business" },
+  { day: 11, week: 2, phase: "Villain", category: "History", person: "Sojourner Truth", lesson: "Speaking truth" },
+  { day: 12, week: 2, phase: "Villain", category: "Science", person: "Katherine Johnson", lesson: "Math & space" },
+  { day: 13, week: 2, phase: "Villain", category: "Visual Art", person: "Hayao Miyazaki", lesson: "World building" },
+  { day: 14, week: 2, phase: "Villain", category: "Philosophy", person: "Alan Watts", lesson: "Awareness & perspective" },
+  { day: 15, week: 3, phase: "World", category: "Business", person: "Nike", lesson: "Brand identity" },
+  { day: 16, week: 3, phase: "World", category: "History", person: "Martin Luther King Jr.", lesson: "Justice & nonviolence" },
+  { day: 17, week: 3, phase: "World", category: "Science", person: "Jane Goodall", lesson: "Observation & patience" },
+  { day: 18, week: 3, phase: "World", category: "Visual Art", person: "Faith Ringgold", lesson: "Story quilts" },
+  { day: 19, week: 3, phase: "World", category: "Philosophy", person: "Ram Dass", lesson: "Service & love" },
+  { day: 20, week: 3, phase: "World", category: "Business", person: "Apple", lesson: "Design & ecosystem" },
+  { day: 21, week: 3, phase: "World", category: "History", person: "Eleanor Roosevelt", lesson: "Service & leadership" },
+  { day: 22, week: 4, phase: "Script Act 1", category: "Science", person: "Mae Jemison", lesson: "Space & courage" },
+  { day: 23, week: 4, phase: "Script Act 1", category: "Visual Art", person: "Walt Disney", lesson: "Animation & business" },
+  { day: 24, week: 4, phase: "Script Act 1", category: "Philosophy", person: "Krishnamurti", lesson: "Observation & freedom" },
+  { day: 25, week: 4, phase: "Script Act 1", category: "Business", person: "Amazon", lesson: "Logistics & convenience" },
+  { day: 26, week: 4, phase: "Script Act 1", category: "Literature", person: "Maya Angelou", lesson: "Voice & resilience" },
+  { day: 27, week: 4, phase: "Script Act 1", category: "Music", person: "Stevie Wonder", lesson: "Mastery & creativity" },
+  { day: 28, week: 4, phase: "Script Act 1", category: "Religion", person: "Buddha", lesson: "Mindfulness" },
+  { day: 29, week: 5, phase: "Script Act 2", category: "Economics", person: "Supply & Demand", lesson: "Why prices move" },
+  { day: 30, week: 5, phase: "Script Act 2", category: "Film", person: "Ava DuVernay", lesson: "Directing with voice" },
+  { day: 31, week: 5, phase: "Script Act 2", category: "Literature", person: "Langston Hughes", lesson: "Poetry & identity" },
+  { day: 32, week: 5, phase: "Script Act 2", category: "Music", person: "Nina Simone", lesson: "Art & conviction" },
+  { day: 33, week: 5, phase: "Script Act 2", category: "Religion", person: "Jesus", lesson: "Love & service" },
+  { day: 34, week: 5, phase: "Script Act 2", category: "Economics", person: "Inflation", lesson: "Why money buys less" },
+  { day: 35, week: 5, phase: "Script Act 2", category: "Film", person: "Ryan Coogler", lesson: "Story & culture" },
+  { day: 36, week: 6, phase: "Script Act 3", category: "Literature", person: "Octavia Butler", lesson: "Imagination & future" },
+  { day: 37, week: 6, phase: "Script Act 3", category: "Music", person: "Prince", lesson: "Originality & ownership" },
+  { day: 38, week: 6, phase: "Script Act 3", category: "Religion", person: "Lao Tzu", lesson: "Flow & humility" },
+  { day: 39, week: 6, phase: "Script Act 3", category: "Economics", person: "Saving", lesson: "Pay yourself first" },
+  { day: 40, week: 6, phase: "Script Act 3", category: "Film", person: "Shonda Rhimes", lesson: "Writing & production" },
+  { day: 41, week: 6, phase: "Script Act 3", category: "Literature", person: "Shakespeare", lesson: "Characters & conflict" },
+  { day: 42, week: 6, phase: "Script Act 3", category: "Music", person: "Aretha Franklin", lesson: "Voice & respect" },
+  { day: 43, week: 7, phase: "Thumbnails", category: "Religion", person: "Rumi", lesson: "Love & poetry" },
+  { day: 44, week: 7, phase: "Thumbnails", category: "Economics", person: "Portfolio", lesson: "Collection of investments" },
+  { day: 45, week: 7, phase: "Thumbnails", category: "Film", person: "Issa Rae", lesson: "Build your own platform" },
+  { day: 46, week: 7, phase: "Thumbnails", category: "Literature", person: "J.K. Rowling", lesson: "World building" },
+  { day: 47, week: 7, phase: "Thumbnails", category: "Music", person: "Beethoven", lesson: "Persistence" },
+  { day: 48, week: 7, phase: "Thumbnails", category: "Religion", person: "Thich Nhat Hanh", lesson: "Peace & breathing" },
+  { day: 49, week: 7, phase: "Thumbnails", category: "Economics", person: "Profit", lesson: "Money after costs" },
+  { day: 50, week: 8, phase: "Draft Pages", category: "Film", person: "Greta Gerwig", lesson: "Writing & directing" },
+  { day: 51, week: 8, phase: "Draft Pages", category: "Tech/AI", person: "Ada Lovelace", lesson: "Computer imagination" },
+  { day: 52, week: 8, phase: "Draft Pages", category: "Tech/AI", person: "Grace Hopper", lesson: "Coding languages" },
+  { day: 53, week: 8, phase: "Draft Pages", category: "Tech/AI", person: "Fei-Fei Li", lesson: "AI & vision" },
+  { day: 54, week: 8, phase: "Draft Pages", category: "Tech/AI", person: "Tim Berners-Lee", lesson: "The web" },
+  { day: 55, week: 8, phase: "Draft Pages", category: "Leadership", person: "Madam C.J. Walker", lesson: "Entrepreneurship" },
+  { day: 56, week: 8, phase: "Draft Pages", category: "Leadership", person: "Oprah Winfrey", lesson: "Media ownership" },
+  { day: 57, week: 9, phase: "Final Pages", category: "Leadership", person: "Serena Williams", lesson: "Discipline" },
+  { day: 58, week: 9, phase: "Final Pages", category: "Leadership", person: "Michelle Obama", lesson: "Education & character" },
+  { day: 59, week: 9, phase: "Final Pages", category: "Leadership", person: "Queen Nzinga", lesson: "Strategy" },
+  { day: 60, week: 9, phase: "Final Pages", category: "Extra", person: "Malala Yousafzai", lesson: "Education bravery" },
+  { day: 64, week: 10, phase: "Brand+Site", category: "Philosophy", person: "Marcus Aurelius", lesson: "Control what you can" },
+  { day: 71, week: 11, phase: "Store Concept", category: "History", person: "Sojourner Truth", lesson: "Speaking truth" }
+];
+
+const byPerson = new Map();
+assignments.forEach((item) => {
+  if (!byPerson.has(item.person)) {
+    byPerson.set(item.person, {
+      person: item.person,
+      category: item.category,
+      lesson: item.lesson,
+      startDay: item.day,
+      startWeek: item.week,
+      startPhase: item.phase,
+      href: item.href || "",
+      days: []
+    });
+  }
+  const row = byPerson.get(item.person);
+  row.days.push(item.day);
+  if (!row.href && item.href) row.href = item.href;
+});
+
+const people = Array.from(byPerson.values());
+const grid = document.getElementById("wisdomGrid");
+
+people.forEach((item, index) => {
+  const days = item.days.map((day) => `<span class="chip">Day ${day}</span>`).join("");
+  const action = item.href
+    ? `<a class="card-link ready" href="${item.href}">Open Page</a>`
+    : `<span class="card-link soon">Page Coming Soon</span>`;
+
+  grid.innerHTML += `
+    <article class="card">
+      <div class="count">${index + 1}</div>
+      <div class="meta">Start Day ${item.startDay} · Week ${item.startWeek}</div>
+      <h3 class="name">${item.person}</h3>
+      <p class="lesson">${item.category} · ${item.lesson}</p>
+      <div class="days">${days}</div>
+      ${action}
+    </article>
+  `;
+});
+</script>
+</body>
+</html>
