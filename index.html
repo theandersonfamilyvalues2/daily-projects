@@ -2,14 +2,258 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="refresh" content="0; url=./homepage-index.html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Redirecting…</title>
-<script>
-window.location.replace('./homepage-index.html');
-</script>
+<title>Anderson Creator Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="data.js"></script>
+<style>
+:root{--navy:#0f1e35;--gold:#C8860A;--gold2:#F5A623;--cream:#FAF7F2;--dark:#0a1220;--white:#fff;--mgray:rgba(250,247,242,0.55)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--cream);min-height:100vh}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.85rem 2rem;display:flex;align-items:center;justify-content:space-between;background:rgba(10,18,32,0.93);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.07)}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.15rem;letter-spacing:.08em;color:var(--gold);text-decoration:none}
+.nav-links{display:flex;gap:1.5rem;list-style:none}
+.nav-links a{font-size:.7rem;font-family:'DM Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);text-decoration:none;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+@media(max-width:640px){.nav-links{display:none}}
+.page{display:none;max-width:900px;margin:0 auto;padding:5.5rem 1.5rem 4rem}
+.page.active{display:block}
+.eyebrow{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
+.big-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.8rem,8vw,6rem);line-height:.95;color:var(--white);letter-spacing:.02em;margin-bottom:.5rem}
+.sub{font-size:.85rem;color:var(--mgray);font-family:'DM Mono',monospace;letter-spacing:.06em;margin-bottom:2rem}
+.badge{display:inline-block;padding:.25rem .7rem;border-radius:100px;font-size:.68rem;font-family:'DM Mono',monospace;letter-spacing:.1em;text-transform:uppercase}
+.badge-gold{background:rgba(200,134,10,.12);color:var(--gold2);border:1px solid rgba(200,134,10,.25)}
+.badge-blue{background:rgba(60,110,200,.15);color:#7ab0f5;border:1px solid rgba(60,110,200,.2)}
+.card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:1.5rem;position:relative;overflow:hidden}
+.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.1rem}
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem}
+.sec-gap{margin-top:2.5rem}
+.nav-row{display:flex;justify-content:space-between;padding-top:2rem;margin-top:2.5rem;border-top:1px solid rgba(255,255,255,.07)}
+.nav-row a,.nav-row button{background:none;border:none;cursor:pointer;font-size:.73rem;font-family:'DM Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);text-decoration:none;padding:0}
+.hub-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:1.5rem;cursor:pointer;transition:all .2s;display:block;text-decoration:none;color:inherit}
+.hub-card:hover{background:rgba(255,255,255,.07);transform:translateY(-3px);border-color:rgba(200,134,10,.3)}
+.hub-icon{font-size:1.8rem;margin-bottom:.75rem}
+.hub-title{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.04em;color:var(--white);margin-bottom:.3rem}
+.hub-desc{font-size:.8rem;color:var(--mgray);line-height:1.5}
+.hub-link{margin-top:.75rem;font-size:.7rem;font-family:'DM Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.quote-block{border-left:3px solid var(--gold);padding:0 0 0 1.2rem;margin:1.5rem 0;border-radius:0}
+.quote-text{font-style:italic;font-size:1.05rem;line-height:1.65;color:var(--white);margin-bottom:.4rem}
+.quote-attr{font-size:.78rem;color:var(--mgray);font-family:'DM Mono',monospace}
+.body-text{font-size:.92rem;line-height:1.8;color:var(--mgray);margin-bottom:1.5rem}
+.bullets{display:flex;flex-direction:column;gap:.65rem;margin-bottom:1.5rem}
+.bullet{display:flex;gap:.85rem;align-items:flex-start;padding:.9rem 1rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px}
+.bnum{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--gold);font-weight:500;min-width:18px;margin-top:2px}
+.btext{font-size:.88rem;line-height:1.6;color:rgba(250,247,242,.85)}
+.conn-box{padding:1rem 1.1rem;background:rgba(200,134,10,.07);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;margin-bottom:1.5rem}
+.conn-label{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem}
+.conn-text{font-size:.86rem;line-height:1.6;color:rgba(250,247,242,.78)}
+.sched-wrap{border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.07)}
+.sched-row{display:grid;grid-template-columns:82px 155px 1fr;align-items:center;padding:.75rem 1rem;border-bottom:1px solid rgba(255,255,255,.05);gap:1rem;transition:background .15s}
+.sched-row:last-child{border-bottom:none}
+.sched-row:hover{background:rgba(255,255,255,.03)}
+.sched-row.hl-gold{background:rgba(200,134,10,.09);border-left:3px solid var(--gold)}
+.sched-row.hl-purple{background:rgba(80,50,140,.1);border-left:3px solid #8b6dc0}
+.sched-row.hl-demo{background:rgba(200,134,10,.06);border-left:3px solid var(--gold2)}
+.st{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--gold);white-space:nowrap}
+.sb{font-weight:700;font-size:.82rem;color:var(--white)}
+.sd{font-size:.78rem;color:var(--mgray);line-height:1.4}
+@media(max-width:580px){.sched-row{grid-template-columns:65px 1fr}.sched-row>*:nth-child(2){display:none}}
+.login-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:1.5rem;position:relative;overflow:hidden}
+.lc-bar{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold2))}
+.lc-name{font-family:'Bebas Neue',sans-serif;font-size:1.9rem;letter-spacing:.05em;color:var(--gold);margin-bottom:.15rem}
+.lc-url a{font-family:'DM Mono',monospace;font-size:.7rem;color:rgba(255,255,255,.35);text-decoration:none}
+.lc-url a:hover{color:var(--gold)}
+.lc-rows{display:flex;flex-direction:column;gap:.45rem;margin-top:1rem}
+.lc-row{display:grid;grid-template-columns:88px 1fr;gap:.5rem;padding:.45rem .65rem;background:rgba(255,255,255,.04);border-radius:7px}
+.lc-lbl{font-size:.7rem;font-family:'DM Mono',monospace;color:rgba(255,255,255,.35)}
+.lc-val{font-size:.78rem;font-family:'DM Mono',monospace;color:var(--white);font-weight:500;word-break:break-all}
+.lc-note{margin-top:.85rem;padding:.55rem .7rem;background:rgba(200,134,10,.08);border-left:2px solid var(--gold);border-radius:0 6px 6px 0;font-size:.76rem;color:rgba(250,247,242,.6);line-height:1.5}
+.open-link{display:inline-block;margin-top:.85rem;padding:.38rem .85rem;background:rgba(200,134,10,.1);border:1px solid rgba(200,134,10,.22);border-radius:7px;font-size:.7rem;font-family:'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--gold2);text-decoration:none;transition:background .2s}
+.open-link:hover{background:rgba(200,134,10,.2)}
+.phase-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:1.25rem;cursor:pointer;position:relative;overflow:hidden;transition:all .2s;user-select:none}
+.phase-card:hover{background:rgba(255,255,255,.06)}
+.phase-num-bg{font-family:'Bebas Neue',sans-serif;font-size:4rem;line-height:1;color:rgba(200,134,10,.12);position:absolute;top:.5rem;right:.9rem}
+.phase-wk{font-family:'DM Mono',monospace;font-size:.63rem;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:.4rem}
+.phase-name{font-size:.95rem;font-weight:700;color:var(--white);margin-bottom:.35rem;line-height:1.3}
+.phase-out{font-size:.76rem;color:var(--mgray);line-height:1.4}
+.phase-del{display:none;margin-top:.85rem;padding-top:.85rem;border-top:1px solid rgba(255,255,255,.07)}
+.phase-card.open .phase-del{display:block}
+.phase-del ul{list-style:none;display:flex;flex-direction:column;gap:.35rem}
+.phase-del li{font-size:.76rem;color:rgba(250,247,242,.7);padding-left:1rem;position:relative;line-height:1.4}
+.phase-del li::before{content:'→';position:absolute;left:0;color:var(--gold)}
+.checklist{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:12px;overflow:hidden;margin-bottom:.65rem}
+.chk{display:flex;align-items:center;gap:.8rem;padding:.78rem 1rem;border-bottom:1px solid rgba(255,255,255,.05);cursor:pointer;transition:background .15s;user-select:none}
+.chk:last-child{border-bottom:none}
+.chk:hover{background:rgba(255,255,255,.03)}
+.chk.done{opacity:.4}
+.chk.done .chk-text{text-decoration:line-through}
+.box{width:19px;height:19px;border:1.5px solid rgba(255,255,255,.2);border-radius:5px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
+.chk.done .box{background:var(--gold);border-color:var(--gold)}
+.chk-ck{display:none;width:10px;height:10px}
+.chk.done .chk-ck{display:block}
+.chk-text{font-size:.86rem;color:rgba(250,247,242,.83);flex:1}
+.chk-tag{font-size:.65rem;font-family:'DM Mono',monospace;color:rgba(255,255,255,.22);white-space:nowrap}
+.reset-btn{background:transparent;border:1px solid rgba(255,255,255,.1);border-radius:7px;font-size:.7rem;font-family:'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.3);cursor:pointer;padding:.35rem .8rem;transition:all .2s}
+.reset-btn:hover{border-color:rgba(200,134,10,.3);color:var(--gold)}
+.prog-wrap{margin-bottom:1.5rem}
+.prog-label{display:flex;justify-content:space-between;font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.4rem}
+.prog-bar{height:5px;background:rgba(255,255,255,.07);border-radius:100px;overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:100px;transition:width .45s ease}
+.today-banner{background:rgba(200,134,10,.09);border:1px solid rgba(200,134,10,.22);border-radius:14px;padding:1.25rem 1.5rem;margin-bottom:2rem}
+.today-day{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;color:var(--white);line-height:1;margin-bottom:.2rem}
+.today-phase{font-size:.82rem;color:var(--gold2);font-family:'DM Mono',monospace;letter-spacing:.08em}
+.today-proj{font-size:.9rem;color:rgba(250,247,242,.75);margin-top:.6rem;line-height:1.55}
+footer{text-align:center;padding:2.5rem 1.5rem;border-top:1px solid rgba(255,255,255,.06);margin-top:2rem}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--gold);letter-spacing:.1em;margin-bottom:.3rem}
+.footer-sub{font-size:.72rem;color:rgba(255,255,255,.25);font-family:'DM Mono',monospace;letter-spacing:.1em}
+</style>
 </head>
 <body>
-<p>Redirecting to <a href="./homepage-index.html">homepage-index.html</a>…</p>
+<nav>
+  <a class="nav-logo" onclick="show('home')">Anderson Creator Academy</a>
+  <ul class="nav-links">
+    <li><a onclick="show('today')">Today</a></li>
+    <li><a onclick="show('wisdom')">Wisdom</a></li>
+    <li><a onclick="show('schedule')">Schedule</a></li>
+    <li><a onclick="show('logins')">Logins</a></li>
+    <li><a onclick="show('phases')">Phases</a></li>
+    <li><a onclick="show('zoe')">Zoe</a></li>
+    <li><a onclick="show('macie')">Macie</a></li>
+  </ul>
+</nav>
+<div class="page active" id="pg-home">
+  <div style="min-height:45vh;display:flex;flex-direction:column;justify-content:center;padding-top:2rem">
+    <p class="eyebrow">Summer 2026 · Zoe & Macie</p>
+    <div class="big-title">Anderson<br><span style="color:var(--gold)">Creator Academy</span></div>
+    <p style="font-size:1rem;color:var(--mgray);max-width:480px;line-height:1.7;margin-bottom:2rem">13 weeks. 91 days. One project at a time. Build something real this summer.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2.5rem">
+      <span class="badge badge-gold">12 PM Start</span>
+      <span class="badge badge-gold">Wisdom First</span>
+      <span class="badge badge-gold">Workout Daily</span>
+      <span class="badge badge-gold">One Project</span>
+      <span class="badge badge-gold">Demo Every Sunday</span>
+    </div>
+  </div>
+  <div class="grid-3">
+    <div class="hub-card" onclick="show('today')"><div class="hub-icon">📅</div><div class="hub-title">Today</div><div class="hub-desc" id="home-today-desc">Loading today's info...</div><div class="hub-link">Open today →</div></div>
+    <div class="hub-card" onclick="show('wisdom')"><div class="hub-icon">⭐</div><div class="hub-title">Wisdom</div><div class="hub-desc" id="home-wisdom-desc">Loading wisdom...</div><div class="hub-link">Read wisdom →</div></div>
+    <div class="hub-card" onclick="show('schedule')"><div class="hub-icon">📋</div><div class="hub-title">Schedule</div><div class="hub-desc">Full time-blocked day — 12 PM start through house walkthrough.</div><div class="hub-link">View schedule →</div></div>
+    <div class="hub-card" onclick="show('logins')"><div class="hub-icon">🔐</div><div class="hub-title">Logins</div><div class="hub-desc">Tynker, Sparketh, IXL — all usernames, passwords, and instructions.</div><div class="hub-link">View logins →</div></div>
+    <div class="hub-card" onclick="show('phases')"><div class="hub-icon">🗺</div><div class="hub-title">Phases</div><div class="hub-desc">All 13 weeks with summaries and deliverables. Tap to expand.</div><div class="hub-link">View phases →</div></div>
+    <div class="hub-card" onclick="show('zoe')"><div class="hub-icon">🎨</div><div class="hub-title">Zoe & Macie</div><div class="hub-desc">Individual checklists and trackers for each girl.</div><div class="hub-link">Open dashboards →</div></div>
+  </div>
+  <footer><div class="footer-logo">Anderson Creator Academy</div><div class="footer-sub">Summer 2026 · Build Something Real</div></footer>
+</div>
+<div class="page" id="pg-today">
+  <p class="eyebrow">Current Day</p>
+  <div class="today-banner">
+    <div class="today-day" id="td-daynum">Day —</div>
+    <div class="today-phase" id="td-phase">—</div>
+    <div class="today-proj" id="td-project">—</div>
+  </div>
+  <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1.5rem" id="td-badges"></div>
+  <div class="sec-gap">
+    <p class="eyebrow">Daily Proof Required</p>
+    <div id="td-proof" style="display:flex;flex-direction:column;gap:.4rem;margin-bottom:1.5rem"></div>
+  </div>
+  <div id="td-demo-box" style="display:none;padding:1rem 1.1rem;background:rgba(200,134,10,.08);border:1px solid rgba(200,134,10,.25);border-radius:10px;margin-bottom:1rem">
+    <div style="font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem">Demo Night</div>
+    <div style="font-size:.86rem;color:rgba(250,247,242,.8)">Tonight is Demo Night. Present your work to the family. Fill the scorecard. Parent initials required.</div>
+  </div>
+  <p style="font-size:.78rem;color:rgba(255,255,255,.3);font-family:'DM Mono',monospace;margin-top:.5rem">
+    To advance to the next day: open <code style="color:var(--gold)">data.js</code> and change <code style="color:var(--gold)">currentDay</code>.
+  </p>
+  <div class="nav-row"><button onclick="show('home')">← Home</button><button onclick="show('wisdom')">Today's Wisdom →</button></div>
+</div>
+<div class="page" id="pg-wisdom">
+  <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1.25rem" id="w-badges"></div>
+  <p class="big-title" id="w-person" style="font-size:clamp(2.5rem,8vw,5.5rem)">—</p>
+  <p style="font-size:.85rem;color:var(--mgray);font-family:'DM Mono',monospace;margin-bottom:.5rem" id="w-cat">—</p>
+  <span class="badge badge-gold" id="w-lesson" style="margin-bottom:1.5rem;display:inline-block">—</span>
+  <div class="quote-block"><p class="quote-text" id="w-quote">—</p><p class="quote-attr" id="w-attr">—</p></div>
+  <p class="body-text" id="w-body">—</p>
+  <p class="eyebrow">3 Bullets for Your Notebook</p>
+  <div class="bullets" id="w-bullets"></div>
+  <div class="conn-box"><div class="conn-label">Project Connection</div><div class="conn-text" id="w-conn">—</div></div>
+  <div class="nav-row"><button onclick="show('today')">← Today</button><button onclick="show('schedule')">Schedule →</button></div>
+</div>
+<div class="page" id="pg-schedule">
+  <p class="eyebrow">Every Day · No Exceptions</p>
+  <div class="big-title">Daily Schedule</div>
+  <p class="sub">12:00 PM start · Wisdom before any screen · One project at a time</p>
+  <div class="sched-wrap">
+    <div class="sched-row hl-purple"><span class="st">12:00 PM</span><span class="sb">Morning Reset</span><span class="sd">Make bed · wash face · brush teeth · get dressed · eat · drink water</span></div>
+    <div class="sched-row hl-purple"><span class="st">12:20</span><span class="sb">Workout + Exercise</span><span class="sd">Walk · run · bike · jump rope · dance · strength — 30 min of movement</span></div>
+    <div class="sched-row hl-purple"><span class="st">12:50</span><span class="sb">Meditation</span><span class="sd">5 min quiet breathing — Headspace, Calm, or silent sitting. No phones.</span></div>
+    <div class="sched-row hl-gold"><span class="st">12:55</span><span class="sb">★ Wisdom First</span><span class="sd">One person: Who / What they did / Lesson / Connection to project. 3 bullets BEFORE any screen.</span></div>
+    <div class="sched-row"><span class="st">1:10</span><span class="sb">IXL Math</span><span class="sd">Georgia State Standards · record skill name + score · 30 min</span></div>
+    <div class="sched-row"><span class="st">1:40</span><span class="sb">IXL Elective</span><span class="sd">Mon: Spanish · Tue: Science · Wed: Language Arts · Thu: Social Studies · Fri: Math Review</span></div>
+    <div class="sched-row"><span class="st">2:10</span><span class="sb">Tynker</span><span class="sd">Select My Path → Continue · curriculum only · record lesson name · 30 min</span></div>
+    <div class="sched-row"><span class="st">2:40</span><span class="sb">Sparketh</span><span class="sd">Select Tracks → Continue course · save or photograph output · 30 min</span></div>
+    <div class="sched-row"><span class="st">3:10</span><span class="sb">Project Work</span><span class="sd">Complete today's assignment. Save visible proof before closing. 60–90 min.</span></div>
+    <div class="sched-row"><span class="st">4:40</span><span class="sb">House</span><span class="sd">Afternoon walkthrough · tidy spaces · refill water</span></div>
+    <div class="sched-row hl-demo"><span class="st">Sunday PM</span><span class="sb">Demo Night</span><span class="sd">Present week's work to the family · fill scorecard · parent initials required</span></div>
+  </div>
+  <div class="sec-gap">
+    <p class="eyebrow">IXL Elective Rotation</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:.65rem;margin-top:.65rem">
+      <div class="card" style="padding:1rem;text-align:center"><div style="font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mgray);margin-bottom:.35rem">Monday</div><div style="font-weight:700;font-size:.9rem">Spanish</div></div>
+      <div class="card" style="padding:1rem;text-align:center"><div style="font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mgray);margin-bottom:.35rem">Tuesday</div><div style="font-weight:700;font-size:.9rem">Science</div></div>
+      <div class="card" style="padding:1rem;text-align:center"><div style="font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mgray);margin-bottom:.35rem">Wednesday</div><div style="font-weight:700;font-size:.9rem">Language Arts</div></div>
+      <div class="card" style="padding:1rem;text-align:center"><div style="font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mgray);margin-bottom:.35rem">Thursday</div><div style="font-weight:700;font-size:.9rem">Social Studies</div></div>
+      <div class="card" style="padding:1rem;text-align:center"><div style="font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mgray);margin-bottom:.35rem">Friday</div><div style="font-weight:700;font-size:.9rem">Math Review</div></div>
+    </div>
+  </div>
+  <div class="nav-row"><button onclick="show('home')">← Home</button><button onclick="show('logins')">Logins →</button></div>
+</div>
+<div class="page" id="pg-logins">
+  <p class="eyebrow">Platform Access</p>
+  <div class="big-title">Logins</div>
+  <p class="sub">All usernames, passwords, and instructions in one place</p>
+  <div class="grid-2" id="logins-grid"></div>
+  <div class="nav-row"><button onclick="show('home')">← Home</button><button onclick="show('phases')">Phases →</button></div>
+</div>
+<div class="page" id="pg-phases">
+  <p class="eyebrow">13 Weeks · 91 Days</p>
+  <div class="big-title">Project Phases</div>
+  <p class="sub">One project at a time · Finish before moving on · Tap a card to see deliverables</p>
+  <div class="grid-3" id="phases-grid"></div>
+  <p style="margin-top:1rem;font-size:.73rem;color:rgba(255,255,255,.25);font-family:'DM Mono',monospace">↑ Tap any card to expand deliverables</p>
+  <div class="nav-row"><button onclick="show('home')">← Home</button><button onclick="show('zoe')">Dashboards →</button></div>
+</div>
+<div class="page" id="pg-zoe">
+  <div style="display:flex;align-items:center;gap:1.25rem;margin-bottom:2rem">
+    <div style="width:60px;height:60px;border-radius:50%;background:rgba(200,134,10,.12);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1.9rem;color:var(--gold);flex-shrink:0">Z</div>
+    <div><div class="big-title" style="font-size:clamp(2rem,5vw,3.5rem)">Zoe</div><p style="font-size:.8rem;color:var(--mgray);font-family:'DM Mono',monospace" id="zoe-sub">Week 1 · Day 1</p></div>
+  </div>
+  <div class="prog-wrap"><div class="prog-label"><span>Today's Progress</span><span id="zoe-pct">0%</span></div><div class="prog-bar"><div class="prog-fill" id="zoe-prog" style="width:0%"></div></div></div>
+  <p class="eyebrow">Today's Checklist</p>
+  <div class="checklist" id="zoe-list"></div>
+  <button class="reset-btn" onclick="resetList('zoe')" style="margin-top:.6rem">Reset checklist</button>
+  <div class="nav-row"><button onclick="show('home')">← Home</button><button onclick="show('macie')">Macie →</button></div>
+</div>
+<div class="page" id="pg-macie">
+  <div style="display:flex;align-items:center;gap:1.25rem;margin-bottom:2rem">
+    <div style="width:60px;height:60px;border-radius:50%;background:rgba(90,143,212,.12);border:2px solid #5a8fd4;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1.9rem;color:#5a8fd4;flex-shrink:0">M</div>
+    <div><div class="big-title" style="font-size:clamp(2rem,5vw,3.5rem)">Macie</div><p style="font-size:.8rem;color:var(--mgray);font-family:'DM Mono',monospace" id="macie-sub">Week 1 · Day 1</p></div>
+  </div>
+  <div class="prog-wrap"><div class="prog-label"><span>Today's Progress</span><span id="macie-pct">0%</span></div><div class="prog-bar"><div class="prog-fill" id="macie-prog" style="width:0%"></div></div></div>
+  <p class="eyebrow">Today's Checklist</p>
+  <div class="checklist" id="macie-list"></div>
+  <button class="reset-btn" onclick="resetList('macie')" style="margin-top:.6rem">Reset checklist</button>
+  <div class="nav-row"><button onclick="show('zoe')">← Zoe</button><button onclick="show('home')">Home →</button></div>
+</div>
+<script>
+function show(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById('pg-'+id).classList.add('active');window.scrollTo(0,0);document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'))}
+const currentDay=ACADEMY.days.find(d=>d.day===ACADEMY.currentDay)||ACADEMY.days[ACADEMY.days.length-1];
+const SVG='<svg class="chk-ck" viewBox="0 0 12 12" fill="none"><polyline points="1.5,6 4.5,9 10.5,3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+function buildChecklist(who){const items=[['Morning reset — bed, face, teeth, dress, eat, water','12:00'],['Workout + Exercise — 30 min movement','12:20'],['Meditation — 5 min quiet breathing','12:50'],['★ Wisdom First — '+currentDay.wisdom.person+', '+currentDay.wisdom.lesson+'. Write 3 bullets.','12:55'],['IXL Math — Georgia Standards, record skill + score','1:10'],['IXL Elective — record topic + one thing learned','1:40'],['Tynker — Select My Path, continue curriculum','2:10'],['Sparketh — Select Tracks, save drawing photo','2:40'],['Project: '+currentDay.project,'3:10'],['House walkthrough — tidy, refill water','4:40'],['Night reset — kitchen, clean up, face, teeth, change, eat','Evening']];const el=document.getElementById(who+'-list');el.innerHTML='';items.forEach(([text,time])=>{const div=document.createElement('div');div.className='chk';div.innerHTML='<div class="box">'+SVG+'</div><span class="chk-text">'+text+'</span><span class="chk-tag">'+time+'</span>';div.onclick=function(){this.classList.toggle('done');updateProg(who);saveList(who)};el.appendChild(div)})}
+function updateProg(who){const items=document.querySelectorAll('#'+who+'-list .chk');const done=[...items].filter(i=>i.classList.contains('done')).length;const pct=Math.round(done/items.length*100);document.getElementById(who+'-pct').textContent=pct+'%';document.getElementById(who+'-prog').style.width=pct+'%'}
+function saveList(who){const states=[...document.querySelectorAll('#'+who+'-list .chk')].map(i=>i.classList.contains('done'));try{localStorage.setItem(who+'-d'+currentDay.day,JSON.stringify(states))}catch(e){}}
+function resetList(who){document.querySelectorAll('#'+who+'-list .chk').forEach(i=>i.classList.remove('done'));updateProg(who);try{localStorage.removeItem(who+'-d'+currentDay.day)}catch(e){}}
+function loadList(who){try{const saved=localStorage.getItem(who+'-d'+currentDay.day);if(saved){const states=JSON.parse(saved);document.querySelectorAll('#'+who+'-list .chk').forEach((item,i)=>{if(states[i])item.classList.add('done')})}}catch(e){}updateProg(who)}
+function init(){const d=currentDay;const w=d.wisdom;document.getElementById('home-today-desc').textContent='Day '+d.day+' · '+d.phase+' · '+d.label;document.getElementById('home-wisdom-desc').textContent='Day '+d.day+': '+w.person+' — '+w.lesson;document.getElementById('td-daynum').textContent='Day '+d.day;document.getElementById('td-phase').textContent='Week '+d.week+' · '+d.phase;document.getElementById('td-project').textContent='Project: '+d.project;const badges=document.getElementById('td-badges');badges.innerHTML='<span class="badge badge-gold">Day '+d.day+'</span> <span class="badge badge-blue">Week '+d.week+'</span> <span class="badge badge-gold">'+d.label+'</span>';const proofEl=document.getElementById('td-proof');(d.proof||[]).forEach(p=>{const div=document.createElement('div');div.style.cssText='display:flex;align-items:center;gap:.6rem;padding:.5rem .75rem;background:rgba(255,255,255,.04);border-radius:8px;font-size:.83rem;color:rgba(250,247,242,.75)';div.innerHTML='<span style="color:var(--gold);font-size:.85rem">→</span>'+p;proofEl.appendChild(div)});if(d.isDemo)document.getElementById('td-demo-box').style.display='block';const wBadges=document.getElementById('w-badges');wBadges.innerHTML='<span class="badge badge-gold">Day '+d.day+'</span> <span class="badge badge-blue">Week '+d.week+'</span> <span class="badge badge-blue">'+w.category+'</span>';document.getElementById('w-person').textContent=w.person;document.getElementById('w-cat').textContent=w.category+' · '+w.person;document.getElementById('w-lesson').textContent=w.lesson;document.getElementById('w-quote').textContent=w.quote;document.getElementById('w-attr').textContent='— '+w.person;document.getElementById('w-body').textContent=w.body;const bEl=document.getElementById('w-bullets');w.bullets.forEach((b,i)=>{bEl.innerHTML+='<div class="bullet"><span class="bnum">0'+(i+1)+'</span><span class="btext">'+b+'</span></div>'});document.getElementById('w-conn').textContent=w.connection;const lg=document.getElementById('logins-grid');ACADEMY.logins.forEach(l=>{const rows=[['Zoe',l.zoe],['Macie',l.macie],['Password',l.password]];if(l.parent)rows.push(['Parent',l.parent]);const rowsHtml=rows.map(([lbl,val])=>'<div class="lc-row"><span class="lc-lbl">'+lbl+'</span><span class="lc-val">'+val+'</span></div>').join('');lg.innerHTML+='<div class="login-card"><div class="lc-bar"></div><div class="lc-name">'+l.name+'</div><div class="lc-url"><a href="'+l.url+'" target="_blank">'+l.url.replace('https://','')+' ↗</a></div><div class="lc-rows">'+rowsHtml+'</div><div class="lc-note">'+l.note+'</div><a href="'+l.url+'" target="_blank" class="open-link">Open '+l.name+' ↗</a></div>'});const pg=document.getElementById('phases-grid');ACADEMY.phases.forEach((ph,i)=>{const dels=ph.deliverables.map(d=>'<li>'+d+'</li>').join('');pg.innerHTML+='<div class="phase-card" onclick="this.classList.toggle(\'open\')"><div class="phase-num-bg">'+(i+1)+'</div><div class="phase-wk">Week '+ph.weeks+' · Days '+ph.days+'</div><div class="phase-name">'+ph.name+'</div><div class="phase-out">'+ph.output+'</div><div class="phase-del"><ul>'+dels+'</ul></div></div>'});document.getElementById('zoe-sub').textContent='Week '+d.week+' · Day '+d.day+' · '+d.phase;document.getElementById('macie-sub').textContent='Week '+d.week+' · Day '+d.day+' · '+d.phase;buildChecklist('zoe');buildChecklist('macie');loadList('zoe');loadList('macie')}
+init();
+</script>
 </body>
 </html>
