@@ -30,8 +30,8 @@ const slugify = (s: string) =>
 
 const raw: Array<[WisdomCategory, string, string]> = [
   ["History", "Harriet Tubman", "Courage & rescue"],
-  ["Science", "Marie Curie", "Curiosity & discovery"],
-  ["Visual Art", "Van Gogh", "Vision & persistence"],
+  ["Science", "Marie Curie", "Discovery & persistence"],
+  ["Visual Art", "Van Gogh", "Emotion & color"],
   ["Philosophy", "Marcus Aurelius", "Discipline of the mind"],
   ["Business", "Starbucks", "Building a daily ritual"],
   ["History", "Frederick Douglass", "Voice & Freedom"],
@@ -116,6 +116,23 @@ export const wisdomLibrary: WisdomEntry[] = raw.map(([category, title, lesson], 
       ],
       connection:
         "Great creators do not wait for perfect conditions. They study the map, protect the team, move with courage, and build a path others can follow."
+    };
+  }
+  if (slug === "marie-curie") {
+    return {
+      ...base,
+      status: "ready",
+      quote: "Nothing in life is to be feared, it is only to be understood.",
+      summary:
+        "Marie Curie was a scientist who followed hard questions until they changed the world. She studied invisible energy, discovered polonium and radium, became the first woman to win a Nobel Prize, and remains the only person awarded Nobel Prizes in two different sciences.",
+      bullets: [
+        "She was born Maria Skłodowska in Warsaw, Poland, and moved to Paris to study science.",
+        "She worked with Pierre Curie to study radioactivity and discover new elements.",
+        "She won Nobel Prizes in Physics and Chemistry for work that opened new scientific fields.",
+        "Her persistence helped create tools doctors still use to understand and treat illness."
+      ],
+      connection:
+        "Today, use science to make your hero stronger. Give your hero one tool, power, or rule that has a clear reason behind it. Curiosity makes imagination feel real."
     };
   }
   if (slug === "frederick-douglass") {
